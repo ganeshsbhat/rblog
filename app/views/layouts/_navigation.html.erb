@@ -1,0 +1,38 @@
+<header>
+  <nav>
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href=<%= root_path %> class="brand-logo right">R-BLOG</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <% if user_signed_in? %>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'New Blog', new_user_blog_path(current_user) %></li>
+            <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        <% else %>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Login", new_user_session_path %></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+    <ul class="sidenav" id="mobile-demo">
+      <% if user_signed_in? %>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><%= link_to 'Home', root_path %></li>
+          <li><%= link_to 'New Blog', new_user_blog_path(current_user) %></li>
+          <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        </ul>
+      <% else %>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        </ul>
+      <% end %>
+    </ul>
+  </nav>
+</header>

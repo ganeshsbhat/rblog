@@ -1,0 +1,21 @@
+<div class="new-blog">
+  <% if @blog.errors.any? %>
+    <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= form_for [current_user, @blog], url: user_blog_path, html: { class: "col s12" } do |b| %>
+    <div class="row">
+      <div class="input-field col s6">
+        <%= b.text_field :title , value: @blog.title, id: "blog-title", type: "text", class: "validate" %>
+      </div>
+      <div class="input-field col s12">
+        <%= b.text_area :body, id: "icon_prefix2", class: "materialize-textarea", value: @blog.body %>
+        <label for="icon_prefix2"></label>
+      </div>
+    </div>
+    <%= b.submit "Update", class: "waves-effect waves-light btn-small" %>
+  <% end %>
+</div>

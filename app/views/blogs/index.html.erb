@@ -1,0 +1,16 @@
+<div class="row">
+  <% @blogs.each do |blog| %>
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><%= blog.title %></span>
+          <p><%= blog.body %></p>
+        </div>
+        <div class="card-action">
+          <a href=<%= edit_user_blog_path(current_user.id, blog.id) %> >Edit</a>
+          <%= link_to 'Delete',  user_blog_path(current_user.id, blog.id),  method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
